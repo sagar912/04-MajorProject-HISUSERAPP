@@ -131,6 +131,43 @@ public class HIS_USERServiceImpl implements HIS_USERService {
 			    }
 		
 	}
-
 	
+//================================================= Delete HIS USERS ==========================================================//
+	
+		@Override
+		public boolean deleteHisUser(Integer his_usersId) {
+
+			Optional<HisUsersEntity> findById = hIS_USERSRepo.findById(his_usersId);
+			
+			 if(findById.isPresent()) {
+				 HisUsersEntity hisUsersEntity = findById.get();
+
+				 hisUsersEntity.setIsDeleted("YES");
+				 
+				hIS_USERSRepo.save(hisUsersEntity);
+				 
+
+			 }
+			return true;
+		}
+		
+//================================================= Activate HIS USERS ==========================================================//
+
+		@Override
+		public boolean activateHisUser(int his_usersId) {
+			
+			Optional<HisUsersEntity> findById = hIS_USERSRepo.findById(his_usersId);
+			
+			 if(findById.isPresent()) {
+				 HisUsersEntity hisUsersEntity = findById.get();
+
+				 hisUsersEntity.setIsDeleted("NO");
+				 
+				hIS_USERSRepo.save(hisUsersEntity);
+				 
+
+			 }
+			return true;
+		}
+		
 }

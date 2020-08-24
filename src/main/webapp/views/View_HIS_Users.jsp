@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page isELIgnored ="false" %> 
 
 <%-- <%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
  --%>
@@ -34,25 +33,24 @@ $(document).ready(function() {
 } );
 
 <%----------------------------------Start Function For  Getting Sequence of Number--------------------------------------%>
-/* $(document).ready(function() {
-    var t = $('#example').DataTable( {
-            
-        
-    } );
-                 
-    t.on( 'draw.dt', function () {
-    var PageInfo = $('#example').DataTable().page.info();
-         t.column(0, { page: 'current' }).nodes().each( function (cell, i) {
-            cell.innerHTML = i + 1 + PageInfo.start;
-        } );
-    } );
-} );
- */
+
 
 
 function DeleteConfirm(){
 	var txt;
 	var r = confirm("Are you sure you want to delete?");
+	if (r == true) {
+	    txt = "You pressed OK!";
+	} else {
+	    txt = "You pressed Cancel!";
+	    event.preventDefault();
+	}
+}
+
+
+function ActiveConfirm(){
+	var txt;
+	var r = confirm("Are you sure you want to Activate User?");
 	if (r == true) {
 	    txt = "You pressed OK!";
 	} else {
@@ -87,22 +85,22 @@ function DeleteConfirm(){
          <tbody>
          <c:forEach items="${allHisUsersList}" var="accnt">
          <tr>
-<!--          <td></td>
- -->      <td> ${accnt.firstName} ${accnt.lastName}</td>
+      <td> ${accnt.firstName} ${accnt.lastName}</td>
          <td> ${accnt.email}</td>
          <td>
             
             <a href="updateHisUser?his_id=${accnt.his_usersId}">Edit</a> 
+        
+         <c:if test="${accnt.isDeleted  eq 'NO'}">
          
-             <c:if test="accnt.isDeleted eq NO">
+              <a href="deleteHisUser?his_id=${accnt.his_usersId}" onclick="DeleteConfirm();">Delete</a>
              
-             <a href="deleteHisUser?his_id=${accnt.his_usersId}" onclick="DeleteConfirm()">Delete</a>
              
              </c:if>
              
-             <c:if test="accnt.isDeleted eq YES">
+         <c:if test="${accnt.isDeleted  eq 'YES'}">
              
-             <a href="activateHisUser?his_id=${accnt.his_usersId}">Activate</a>
+             <a href="activateHisUser?his_id=${accnt.his_usersId}"  onclick="ActiveConfirm()">Activate</a>
            </c:if>
 		</td>
          </tr>

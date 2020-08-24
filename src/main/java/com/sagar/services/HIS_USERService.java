@@ -22,5 +22,9 @@ public interface HIS_USERService {
     List<HisUsersEntity> getAllHisUsers();
      
     HIS_USERS getHIS_USERSById(Integer his_usersId);
+    
+    boolean deleteHisUser(Integer his_usersId);
+
+	boolean activateHisUser(int his_usersId);
 
 }

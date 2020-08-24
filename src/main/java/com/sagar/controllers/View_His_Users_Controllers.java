@@ -20,33 +20,44 @@ public class View_His_Users_Controllers {
 @Autowired
 private HIS_USERService hIS_USERService;	
 
-//===========================================================================================//
+//======================================== View His Users ===================================================//
 	@GetMapping("/viewUsers")
 	public String getAllHisUsers(Model model){
 		
 		List<HisUsersEntity> allHisUsersList = hIS_USERService.getAllHisUsers();
-		Map<Integer, String> adminrolelist = hIS_USERService.getAllAdminRoles();
-		model.addAttribute("adminrole", adminrolelist);
+		//Map<Integer, String> adminrolelist = hIS_USERService.getAllAdminRoles();
+		//model.addAttribute("adminrole", adminrolelist);
 		System.out.println(allHisUsersList);
 		  model.addAttribute("allHisUsersList", allHisUsersList);
 
 		return "View_HIS_Users";
 	}		
-//========================================================================================//
-	/*
-	 * @GetMapping(value = { "/getHisUsers" })
-	 * 
-	 * @ResponseBody public Map<Integer, String> getStates(@RequestParam("cid")
-	 * Integer countryId) {
-	 * 
-	 * try { Map<Integer, String> statesByCountry =
-	 * hIS_USERService.getStatesByCountry(countryId); return statesByCountry;
-	 * 
-	 * } catch (Exception e) { return null; }
-	 * 
-	 * }
-	 */
-		
+//==========================================Delete His Users==============================================//
+	 @GetMapping("/deleteHisUser")
+	   public String deleteContacts(@RequestParam("his_id")int his_usersId,Model model) {
+		 
+		 boolean deleteHisUser = hIS_USERService.deleteHisUser(his_usersId);
+		 if(deleteHisUser) {
+			 
+			 model.addAttribute("DMsg", "His User Deleted");
+			 
+		 }
+		   return "ACTION_His_User_Success";
+	   }
+	 
+//==========================================Activate His Users==============================================//
+	 @GetMapping("/activateHisUser")
+	   public String activateHisUser(@RequestParam("his_id")int his_usersId,Model model) {
+		 
+		 boolean activateHisUser = hIS_USERService.activateHisUser(his_usersId);
+		 if(activateHisUser) {
+			 
+			 model.addAttribute("AMsg", "His User Activated");
+			 
+		 }
+		   return "ACTION_His_User_Success";
+	   }
+	 
 	}
 
 
