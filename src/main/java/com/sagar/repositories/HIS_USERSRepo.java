@@ -7,5 +7,7 @@ import com.sagar.entities.HisUsersEntity;
 public interface HIS_USERSRepo extends JpaRepository<HisUsersEntity, Serializable> {
 
 	HisUsersEntity findBypwd(String xyz);
+	
+	
 }
 

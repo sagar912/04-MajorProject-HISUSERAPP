@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.sagar.constants.AppConstants;
+import com.sagar.entities.HisUsersEntity;
 import com.sagar.model.HIS_USERS;
 import com.sagar.model.UnlockAccount;
 import com.sagar.services.HIS_USERService;
@@ -38,20 +39,32 @@ public class Register_His_Users_Controller {
 		@PostMapping(value = { "/register" })
 		public String saveUser(@ModelAttribute("hIS_USERS") HIS_USERS hIS_USERS,Model model) {
 		
-			System.out.println(hIS_USERS);
-			boolean saveUser = hIS_USERService.saveUser(hIS_USERS);
-			
-		if(saveUser == true) {
-			
-			model.addAttribute("SaveMsg", "User Saved SuccessFully..");
-			return "Register_HIS_Users";
-
-		}else {
-			
-			model.addAttribute("SaveMsg", "User Not Saved");
-			return "Register_HIS_Users";	
+			if(hIS_USERS.getHis_usersId() == 0) {
+				System.out.println(hIS_USERS);
+				boolean saveUser = hIS_USERService.saveUser(hIS_USERS);	
+					if(saveUser == true) {
+					model.addAttribute("SaveMsg", "User Saved SuccessFully..");
+					return "Register_HIS_Users";
+				}else {
+					
+					model.addAttribute("SaveMsg", "User Not Saved");
+					return "Register_HIS_Users";	
+				}
+			}
+		//====================update user ===========================//
+			if(hIS_USERS.getHis_usersId() != 0){
+				
+				boolean updatedUserEntity = hIS_USERService.saveupdatedUser(hIS_USERS);	
+				if(updatedUserEntity == true) {
+				model.addAttribute("SaveMsg", "User Updated SuccessFully..");
+				return "Register_HIS_Users";
+			}else {
+				
+				model.addAttribute("SaveMsg", "User Not Updated");
+				return "Register_HIS_Users";	
+			}	
 		}
-		
+			return "Register_HIS_Users";
 		}
 //====================================================== Load Page to Create Permanent Password============================//
 		@GetMapping(value = { "/unlockAcc" })
@@ -68,8 +81,14 @@ public class Register_His_Users_Controller {
 @GetMapping(value= {"/updateHisUser"})	
 public String editHisUser(@RequestParam("his_id") Integer his_usersId,Model model ) {
 	           
-	HIS_USERS updateHisById = hIS_USERService.getHIS_USERSById(his_usersId);
+	HisUsersEntity updateHisById = hIS_USERService.getHIS_USERSById(his_usersId);
 	
+	//System.out.println();
+	System.out.println("controller"+ updateHisById);
+	
+	//========================= Admin Role For Already Registered But updating His User ============================//
+	Map<Integer, String> adminrolelist = hIS_USERService.getAllAdminRoles();
+	model.addAttribute("adminrole", adminrolelist);
 	model.addAttribute("hIS_USERS", updateHisById);
 	
 	return "Register_HIS_Users";

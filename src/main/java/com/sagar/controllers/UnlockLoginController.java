@@ -37,7 +37,7 @@ public class UnlockLoginController {
 			}
 			// ======================= Set Permanent Password =======================//
 
-			boolean updateUser = service.updateUser(hisUsersEntityResponse);
+			boolean updateUser = service.updateUserPwd(hisUsersEntityResponse);
 
 			if (updateUser == true) {
 				model.addAttribute("SuccessMsg", "Your Registration is Successful");

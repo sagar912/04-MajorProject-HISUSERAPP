@@ -15,16 +15,20 @@ public interface HIS_USERService {
 
 	boolean saveUser(HIS_USERS hIS_USERS);
 	
+	
 	HisUsersEntity findByPwd(String xyz);
 	
-    boolean updateUser(HisUsersEntity hisUsersEntity);
- 
+    boolean updateUserPwd(HisUsersEntity hisUsersEntity);
+    
+
     List<HisUsersEntity> getAllHisUsers();
      
-    HIS_USERS getHIS_USERSById(Integer his_usersId);
+    HisUsersEntity getHIS_USERSById(Integer his_usersId);
     
     boolean deleteHisUser(Integer his_usersId);
 
 	boolean activateHisUser(int his_usersId);
+
+	boolean saveupdatedUser(HIS_USERS hIS_USERS);
 
 }

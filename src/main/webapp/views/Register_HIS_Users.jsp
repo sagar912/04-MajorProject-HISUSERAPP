@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html>
 <html>
@@ -34,6 +35,11 @@
 		<table>
 			<tr>
                 <form:hidden path="his_usersId"/>
+                 <form:hidden path="pwd"/>
+                  <form:hidden path="isDeleted"/>
+                  <form:hidden path="isActive"/>
+                 
+                
 				<td>First Name:</td>
 				<td><form:input path="firstName" /></td>
 			</tr>
@@ -52,10 +58,13 @@
 			</tr>
 			 <tr>
 				<th>Role:</th>
-				<td><form:select path="adminRoleId">
+				<td>
+				
+				
+				<form:select path="adminRoleId">
 						<form:option value="">-Select-</form:option>
 						<form:options items="${adminrole}" />
-					</form:select></td>
+					    </form:select></td>
 			</tr> 
 			<tr>
 				<td><input type="reset" value="Reset" /></td>
