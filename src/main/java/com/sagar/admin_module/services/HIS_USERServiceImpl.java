@@ -7,6 +7,8 @@ import java.util.Optional;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import com.sagar.admin_module.constants.AppConstants;
@@ -109,9 +111,11 @@ public class HIS_USERServiceImpl implements HIS_USERService {
 
 //================================================ Get All His Users ========================================================//
 	@Override
-	public List<HisUsersEntity> getAllHisUsers() {
+	public Page<HisUsersEntity> getAllHisUsers(Integer pageSize, int pageNo) {
+		
+		PageRequest page = PageRequest.of(pageSize, pageSize);
 
-		List<HisUsersEntity> findAllHisUsers = hIS_USERSRepo.findAll();
+		Page<HisUsersEntity> findAllHisUsers = hIS_USERSRepo.findAll(page);
 
 		return findAllHisUsers;
 

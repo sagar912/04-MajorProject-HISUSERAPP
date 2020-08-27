@@ -24,10 +24,10 @@
 <script type="text/javascript">
 
 $(document).ready(function() {
-    $('#example').DataTable( {
+  /*   $('#example').DataTable( {
         "pagingType": "full_numbers"
     } );
-
+ */
 
     
 } );
@@ -83,7 +83,7 @@ function ActiveConfirm(){
          </tr>
          </thead>
          <tbody>
-         <c:forEach items="${allHisUsersList}" var="accnt">
+         <c:forEach items="${AllHisUsersList}" var="accnt">
          <tr>
       <td> ${accnt.firstName} ${accnt.lastName}</td>
          <td> ${accnt.email}</td>
@@ -107,6 +107,36 @@ function ActiveConfirm(){
          </c:forEach>
          </tbody>
   	</table>
+  	
+  	<!-----------------------------    Pagination  -------------------------------------->
+	<br>
+	<a href="viewUsers?PageNumber=${1}">First</a>
+
+
+		<c:if test="${CurrentPageNumber > 1 }">
+			<a href="viewUsers?PageNumber=${CurrentPageNumber-1}">Previous</a>
+		</c:if>
+
+	    <c:forEach begin="1" end="${TotalPages}" var="PageNumber">
+
+			<c:if test="${CurrentPageNumber == PageNumber }">
+			     ${PageNumber}
+			</c:if>
+
+		<c:if test="${CurrentPageNumber != PageNumber }">
+			<a href="viewUsers?PageNumber=${PageNumber}">${PageNumber}</a>
+		</c:if>
+
+	   </c:forEach>
+
+		<c:if test="${CurrentPageNumber < TotalPages }">
+			<a href="viewUsers?PageNumber=${CurrentPageNumber+1}">Next</a>
+		</c:if>
+
+		<a href="viewUsers?PageNumber=${TotalPages}">Last</a>
+	
+		<br>
+		<br>
   	<a href="index">Home Page</a>
 </body>
 

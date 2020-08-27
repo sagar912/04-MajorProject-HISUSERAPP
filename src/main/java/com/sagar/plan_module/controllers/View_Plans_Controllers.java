@@ -29,22 +29,26 @@ public class View_Plans_Controllers {
 public String getAllPlans(HttpServletRequest req ,Model model) {
 	
 	//Current Page Number & Page Size //
-	Integer currPno = 2;
+	Integer CurrentPageNumber = 2;
 	Integer pageSize = 2;
 	
 	// Request Page Number //
 	
-	String pno = req.getParameter("pno");
+	String PageNumber = req.getParameter("PageNumber");
 	
-	if(pno!=null && !pno.equals("")) {
-		currPno = Integer.parseInt(pno);
+	if(PageNumber!=null && !PageNumber.equals("")) {
+		CurrentPageNumber = Integer.parseInt(PageNumber);
 	}
 	
-	Page<PlanEntity> pageData = plan_Service.getAllPlans(pageSize, currPno-1);
+	Page<PlanEntity> pageData = plan_Service.getAllPlans(pageSize, CurrentPageNumber-1);
 	
 	List<PlanEntity> entities = pageData.getContent();
-		
-	model.addAttribute("allPlansList", entities);
+	int totalPages = pageData.getTotalPages();
+	
+	model.addAttribute("AllPlansList", entities);
+	model.addAttribute("TotalPages", totalPages);
+	model.addAttribute("CurrentPageNumber", CurrentPageNumber);
+
 	return "View_Plans";
 }
 

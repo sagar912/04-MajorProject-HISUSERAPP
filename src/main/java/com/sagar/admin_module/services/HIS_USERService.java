@@ -2,10 +2,13 @@ package com.sagar.admin_module.services;
 
 import java.util.List;
 import java.util.Map;
+
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import com.sagar.admin_module.entities.HisUsersEntity;
 import com.sagar.admin_module.model.HIS_USERS;
+import com.sagar.plan_module.entities.PlanEntity;
 
 
 @Service
@@ -18,9 +21,7 @@ public interface HIS_USERService {
 	HisUsersEntity findByPwd(String xyz);
 	
     boolean updateUserPwd(HisUsersEntity hisUsersEntity) throws Exception;
-    
-    List<HisUsersEntity> getAllHisUsers();
-     
+    	
     HisUsersEntity getHIS_USERSById(Integer his_usersId);
     
     boolean deleteHisUser(Integer his_usersId);
@@ -28,5 +29,7 @@ public interface HIS_USERService {
 	boolean activateHisUser(int his_usersId);
 
 	boolean saveupdatedUser(HIS_USERS hIS_USERS);
+
+	Page<HisUsersEntity> getAllHisUsers(Integer pageSize, int pageNo);
 
 }

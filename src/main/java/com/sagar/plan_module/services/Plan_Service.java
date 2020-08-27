@@ -16,7 +16,8 @@ public interface Plan_Service {
 	boolean savePlan(Plan plan);
 	
 	 Page<PlanEntity> getAllPlans(Integer pageSize, Integer pageNo);
-    boolean deletePlan(Integer planId);
+   
+	 boolean deletePlan(Integer planId);
 
 	boolean activatePlan(int planId);
 
