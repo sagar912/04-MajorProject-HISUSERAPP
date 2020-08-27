@@ -1,4 +1,4 @@
-package com.sagar.entities;
+package com.sagar.admin_module.entities;
 
 import java.util.Date;
 

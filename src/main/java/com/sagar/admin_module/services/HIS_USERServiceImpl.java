@@ -1,4 +1,4 @@
-package com.sagar.services;
+package com.sagar.admin_module.services;
 
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -9,17 +9,19 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.sagar.constants.AppConstants;
-import com.sagar.entities.AdminRoleEntity;
-import com.sagar.entities.HisUsersEntity;
-import com.sagar.model.HIS_USERS;
-import com.sagar.repositories.AdminRepo;
-import com.sagar.repositories.HIS_USERSRepo;
-import com.sagar.utils.EmailUtils;
-import com.sagar.utils.PwdUtils;
+import com.sagar.admin_module.constants.AppConstants;
+import com.sagar.admin_module.entities.AdminRoleEntity;
+import com.sagar.admin_module.entities.HisUsersEntity;
+import com.sagar.admin_module.model.HIS_USERS;
+import com.sagar.admin_module.repositories.AdminRepo;
+import com.sagar.admin_module.repositories.HIS_USERSRepo;
+import com.sagar.admin_module.utils.EmailUtils;
+import com.sagar.admin_module.utils.PwdUtils;
 
 @Service
 public class HIS_USERServiceImpl implements HIS_USERService {
+
+	private static final String String = null;
 
 	@Autowired
 	private AdminRepo adminRepo;
@@ -92,7 +94,10 @@ public class HIS_USERServiceImpl implements HIS_USERService {
 
 //========================================== Save Unlock Status with Permanent Pasword   ===================================//
 	@Override
-	public boolean updateUserPwd(HisUsersEntity hisUsersEntity) {
+	public boolean updateUserPwd(HisUsersEntity hisUsersEntity) throws Exception {
+		
+		hisUsersEntity.setPwd((PwdUtils.PasswordencryptMsg(hisUsersEntity.getPwd())));
+
 		HisUsersEntity update = hIS_USERSRepo.save(hisUsersEntity);
 		if (update.equals(null)) {
 			return false;

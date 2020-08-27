@@ -1,4 +1,4 @@
-package com.sagar.controllers;
+package com.sagar.admin_module.controllers;
 
 import java.util.Map;
 
@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.sagar.constants.AppConstants;
-import com.sagar.entities.HisUsersEntity;
-import com.sagar.model.HIS_USERS;
-import com.sagar.model.UnlockAccount;
-import com.sagar.services.HIS_USERService;
+import com.sagar.admin_module.constants.AppConstants;
+import com.sagar.admin_module.entities.HisUsersEntity;
+import com.sagar.admin_module.model.HIS_USERS;
+import com.sagar.admin_module.model.UnlockAccount;
+import com.sagar.admin_module.services.HIS_USERService;
 
 @Controller
 public class Register_His_Users_Controller {

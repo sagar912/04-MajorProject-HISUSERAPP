@@ -1,4 +1,4 @@
-package com.sagar.constants;
+package com.sagar.admin_module.constants;
 
 public class AppConstants {
 	
@@ -28,9 +28,9 @@ public class AppConstants {
 	
 	public static final String REGISTER_SUCCESS_MSG_PAGE="SuccessReg";
 
-	public static final String UNLOCK_USER_PAGE="unlockUser";
+	public static final String UNLOCK_USER_PAGE="UnlockUser";
 
-	public static final String UNLOCK_USER_SUCCESS_MSG_PAGE="unlockUserSuccess";
+	public static final String UNLOCK_USER_SUCCESS_MSG_PAGE="UnlockUserSuccess";
     
 
 	

@@ -1,4 +1,4 @@
-package com.sagar.controllers;
+package com.sagar.admin_module.controllers;
 
 import java.util.List;
 import java.util.Map;
@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.sagar.constants.AppConstants;
-import com.sagar.entities.HisUsersEntity;
-import com.sagar.services.HIS_USERService;
+import com.sagar.admin_module.constants.AppConstants;
+import com.sagar.admin_module.entities.HisUsersEntity;
+import com.sagar.admin_module.services.HIS_USERService;
 
 @Controller
 public class View_His_Users_Controllers {
@@ -42,7 +42,7 @@ private HIS_USERService hIS_USERService;
 			 model.addAttribute("DMsg", "His User Deleted");
 			 
 		 }
-		   return "ACTION_His_User_Success";
+		   return "Action_His_User_Success";
 	   }
 	 
 //==========================================Activate His Users==============================================//
@@ -55,7 +55,7 @@ private HIS_USERService hIS_USERService;
 			 model.addAttribute("AMsg", "His User Activated");
 			 
 		 }
-		   return "ACTION_His_User_Success";
+		   return "Action_His_User_Success";
 	   }
 	 
 	}

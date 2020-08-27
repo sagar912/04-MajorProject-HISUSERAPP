@@ -1,4 +1,4 @@
-package com.sagar.model;
+package com.sagar.admin_module.model;
 
 import lombok.Data;
 

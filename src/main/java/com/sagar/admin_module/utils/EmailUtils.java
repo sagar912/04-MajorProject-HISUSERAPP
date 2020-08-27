@@ -1,4 +1,4 @@
-package com.sagar.utils;
+package com.sagar.admin_module.utils;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -11,7 +11,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Component;
 
-import com.sagar.model.HIS_USERS;
+import com.sagar.admin_module.model.HIS_USERS;
 
 
 @Component

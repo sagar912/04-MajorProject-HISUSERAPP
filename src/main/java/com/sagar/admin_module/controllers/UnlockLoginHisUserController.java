@@ -1,4 +1,4 @@
-package com.sagar.controllers;
+package com.sagar.admin_module.controllers;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,14 +9,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.sagar.constants.AppConstants;
-import com.sagar.entities.HisUsersEntity;
-import com.sagar.model.UnlockAccount;
-import com.sagar.services.HIS_USERService;
+import com.sagar.admin_module.constants.AppConstants;
+import com.sagar.admin_module.entities.HisUsersEntity;
+import com.sagar.admin_module.model.UnlockAccount;
+import com.sagar.admin_module.services.HIS_USERService;
 
 
 @Controller
-public class UnlockLoginController {
+public class UnlockLoginHisUserController {
 
 	@Autowired
 	private HIS_USERService service;

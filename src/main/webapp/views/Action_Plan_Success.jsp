@@ -7,9 +7,15 @@
 <title>Insert title here</title>
 </head>
 <body>
- <h1><font color='green'>${SaveMsg}</font></h1>
-<a href="registerContact">Registration Page</a>
-<a href="viewAllContacts">View All Pages</a>
+ 
+    <h1><font color='green'>${APMsg}</font></h1>
+ 
+   <h1><font color='red'>${PDMsg}</font></h1>
+ 
+ <br>
+ <br>
+ 
+<b><a href="viewAllplans">Go Back</a></b>
  
 </body>
 </html>

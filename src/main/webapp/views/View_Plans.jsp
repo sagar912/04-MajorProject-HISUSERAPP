@@ -38,7 +38,7 @@ $(document).ready(function() {
 
 function DeleteConfirm(){
 	var txt;
-	var r = confirm("Are you sure you want to delete?");
+	var r = confirm("Are you sure you want to Plan?");
 	if (r == true) {
 	    txt = "You pressed OK!";
 	} else {
@@ -50,7 +50,7 @@ function DeleteConfirm(){
 
 function ActiveConfirm(){
 	var txt;
-	var r = confirm("Are you sure you want to Activate User?");
+	var r = confirm("Are you sure you want to Activate Plan?");
 	if (r == true) {
 	    txt = "You pressed OK!";
 	} else {
@@ -71,36 +71,39 @@ function ActiveConfirm(){
   <option value=2>Case_Worker</option>
   
 </select> -->
-	<h1>His User App</h1>
+	<h1>Plans Available</h1>
 	
 	<table border="1" id="example" class="table">
 		<thead>
          <tr>
-<!--           <th></th>
- -->         <th> Name</th>
+          <th> Name</th>
           <th>Email</th>
+           <th>Plan Start Date</th>
+          <th>Plan Start Date</th>
           <th>Action(s)</th>
          </tr>
          </thead>
          <tbody>
-         <c:forEach items="${allHisUsersList}" var="accnt">
+         <c:forEach items="${allPlansList}" var="accnt">
          <tr>
-      <td> ${accnt.firstName} ${accnt.lastName}</td>
-         <td> ${accnt.email}</td>
+        <td> ${accnt.planName}</td>
+         <td> ${accnt.planDescription}</td>
+         <td> ${accnt.planStartDate}</td>
+         <td> ${accnt.planEndDate}</td>
          <td>
             
-            <a href="updateHisUser?his_id=${accnt.his_usersId}">Edit /</a> 
+            <a href="updatePlans?planId=${accnt.planId}">Edit /</a> 
         
-         <c:if test="${accnt.isDeleted  eq 'NO'}">
+         <c:if test="${accnt.isPlanDeleted  eq 'NO'}">
          
-              <a href="deleteHisUser?his_id=${accnt.his_usersId}" onclick="DeleteConfirm();">Delete</a>
+              <a href="deleteplans?planId=${accnt.planId}" onclick="DeleteConfirm();">Delete</a>
              
              
              </c:if>
              
-         <c:if test="${accnt.isDeleted  eq 'YES'}">
+         <c:if test="${accnt.isPlanDeleted  eq 'YES'}">
              
-             <a href="activateHisUser?his_id=${accnt.his_usersId}"  onclick="ActiveConfirm()">Activate</a>
+             <a href="activateplan?planId=${accnt.planId}"  onclick="ActiveConfirm()">Activate</a>
            </c:if>
 		</td>
          </tr>
