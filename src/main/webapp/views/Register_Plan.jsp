@@ -81,7 +81,7 @@
 		</table>
 	</form:form>
 	<br>&nbsp;&nbsp;&nbsp;
-	  <a href="viewAllplans">View All Plans</a>   &nbsp;&nbsp;<a href="index">Home Page</a>
+	  <a href="viewAllplans">View All Plans</a>   &nbsp;&nbsp;<a href="login">Index</a>
 	  
 	   
 	  

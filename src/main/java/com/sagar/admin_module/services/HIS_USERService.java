@@ -30,6 +30,11 @@ public interface HIS_USERService {
 
 	boolean saveupdatedUser(HIS_USERS hIS_USERS);
 
-	Page<HisUsersEntity> getAllHisUsers(Integer pageSize, int pageNo);
+	List<HisUsersEntity> getAllHisUsers();
+	
+	HisUsersEntity findByemail(String xyz) throws Exception;
+
+	List<HisUsersEntity> findByAdminRoleId(int roleId);
+
 
 }

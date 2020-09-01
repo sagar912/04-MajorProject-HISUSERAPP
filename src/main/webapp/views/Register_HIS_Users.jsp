@@ -76,7 +76,7 @@
 	<br>
 	  <a href="viewUsers">View All HIS Users /</a>&nbsp;&nbsp;
 	  
-	  	  <a href="loadPlan">Add New Plans</a>
+	  <a href="login">Index</a>
 	  
 </body>
 </html>

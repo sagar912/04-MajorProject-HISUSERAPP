@@ -39,6 +39,24 @@ public class PwdUtils {
 
 		return Base64.getEncoder().encodeToString(encrypted);
 	}
+	
+//========================================= Decrypted Password ===========================================================//
+	
+		public static String decryptPassword(String encryptedpwd) throws Exception {
+			IvParameterSpec ivParamSpec = new IvParameterSpec(INIT_VECTOR.getBytes());
+
+			SecretKeySpec secretKeySpec = new SecretKeySpec(SECRET_KEY.getBytes("UTF-8"), "AES");
+			Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5PADDING");
+
+			cipher.init(Cipher.DECRYPT_MODE, secretKeySpec, ivParamSpec);
+
+			byte[] decodedMsg = Base64.getDecoder().decode(encryptedpwd);
+
+			byte[] decrypted = cipher.doFinal(decodedMsg);
+
+			return new String(decrypted);
+
+		}
 
 
 }

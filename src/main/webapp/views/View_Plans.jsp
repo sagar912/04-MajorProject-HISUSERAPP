@@ -28,11 +28,12 @@
 /* $(document).ready(function() {
     $('#example').DataTable( {
         "pagingType": "full_numbers"
-    } ); */
+    } ); 
  
 
     
-} );
+} );*/
+
 
 <%----------------------------------Start Function For  Getting Sequence of Number--------------------------------------%>
 
@@ -64,15 +65,6 @@ function ActiveConfirm(){
 </head>
 
 <body>
-
-	<!-- <label for="cars">Choose a car:</label>
-
-<select name="roles" id="adminRoles">
-  <option value="">-Select-</option>
-  <option value=1>Admin</option>
-  <option value=2>Case_Worker</option>
-  
-</select> -->
 	<h1>Plans Available</h1>
 
 	<table border="1" id="example" class="table">
@@ -138,7 +130,7 @@ function ActiveConfirm(){
 	
 		<br>
 		<br>
-		<a href="index">Home Page</a>
+		<a href="loadPlan">Register Plan</a>
 </body>
 
 </html>

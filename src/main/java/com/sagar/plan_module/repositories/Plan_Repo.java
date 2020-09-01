@@ -9,5 +9,6 @@ public interface Plan_Repo extends JpaRepository<PlanEntity, Serializable> {
 
 	
 	
+	
 }
 

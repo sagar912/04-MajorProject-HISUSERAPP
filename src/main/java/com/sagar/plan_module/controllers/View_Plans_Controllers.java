@@ -29,7 +29,7 @@ public class View_Plans_Controllers {
 public String getAllPlans(HttpServletRequest req ,Model model) {
 	
 	//Current Page Number & Page Size //
-	Integer CurrentPageNumber = 2;
+	Integer CurrentPageNumber = 1;
 	Integer pageSize = 2;
 	
 	// Request Page Number //

@@ -23,7 +23,6 @@ import com.sagar.admin_module.utils.PwdUtils;
 @Service
 public class HIS_USERServiceImpl implements HIS_USERService {
 
-	private static final String String = null;
 
 	@Autowired
 	private AdminRepo adminRepo;
@@ -34,7 +33,7 @@ public class HIS_USERServiceImpl implements HIS_USERService {
 	@Autowired
 	private EmailUtils emailUtils;
 
-	// ======================================= Load Admin Roles ======================================================//
+	// ======================================= Load Admin Roles // ======================================================//
 	@Override
 	public Map<Integer, String> getAllAdminRoles() {
 
@@ -97,7 +96,7 @@ public class HIS_USERServiceImpl implements HIS_USERService {
 //========================================== Save Unlock Status with Permanent Pasword   ===================================//
 	@Override
 	public boolean updateUserPwd(HisUsersEntity hisUsersEntity) throws Exception {
-		
+
 		hisUsersEntity.setPwd((PwdUtils.PasswordencryptMsg(hisUsersEntity.getPwd())));
 
 		HisUsersEntity update = hIS_USERSRepo.save(hisUsersEntity);
@@ -111,11 +110,9 @@ public class HIS_USERServiceImpl implements HIS_USERService {
 
 //================================================ Get All His Users ========================================================//
 	@Override
-	public Page<HisUsersEntity> getAllHisUsers(Integer pageSize, int pageNo) {
-		
-		PageRequest page = PageRequest.of(pageSize, pageSize);
+	public List<HisUsersEntity> getAllHisUsers() {
 
-		Page<HisUsersEntity> findAllHisUsers = hIS_USERSRepo.findAll(page);
+		List<HisUsersEntity> findAllHisUsers = hIS_USERSRepo.findAll();
 
 		return findAllHisUsers;
 
@@ -130,7 +127,7 @@ public class HIS_USERServiceImpl implements HIS_USERService {
 
 		if (findById.isPresent()) {
 			HisUsersEntity hisUsersEntity = findById.get();
-			System.out.println("serviveimpl"+ hisUsersEntity);
+			System.out.println("serviveimpl" + hisUsersEntity);
 			return hisUsersEntity;
 		} else {
 			return null;
@@ -196,6 +193,27 @@ public class HIS_USERServiceImpl implements HIS_USERService {
 		return true;
 	}
 
+//================================== TO validate Login User ===============================================//
+	@Override
+	public HisUsersEntity findByemail(String xyz) throws Exception {
 
+		HisUsersEntity findByemail = hIS_USERSRepo.findByEmail(xyz);
+
+			String encryptedpwd = findByemail.getPwd();
+			
+			findByemail.setPwd(PwdUtils.decryptPassword(encryptedpwd));
+			return findByemail;
+		
+		
+	}
+	
+//=========================================== Drop Dwon Selection =========================================//	
+	@Override
+	public List<HisUsersEntity> findByAdminRoleId(int roleId) {
+
+		List<HisUsersEntity> findByAdminRoleId = hIS_USERSRepo.findByAdminRoleId(roleId);
+		System.out.println("findByAdminRoleId "+findByAdminRoleId);
+		return findByAdminRoleId;
+	}
 
 }
